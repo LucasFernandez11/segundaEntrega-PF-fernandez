@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { ProductsRoutingModule } from './products/products-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MaterialModule } from './shared/materials.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes=[
   {path:'add-edit-product', component:ProductFormComponent},
@@ -32,6 +33,7 @@ const appRoutes=[
     AppRoutingModule,
     MaterialModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     ProductsRoutingModule
   ],
