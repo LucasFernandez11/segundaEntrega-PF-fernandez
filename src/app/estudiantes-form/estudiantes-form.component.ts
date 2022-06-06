@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { map, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { EstudiantesService } from '../shared/estudiantes.service';
 
@@ -8,21 +9,26 @@ import { EstudiantesService } from '../shared/estudiantes.service';
   templateUrl: './estudiantes-form.component.html',
   styleUrls: ['./estudiantes-form.component.scss']
 })
-export class EstudiantesFormComponent implements OnInit {
+export class EstudiantesFormComponent implements OnInit, OnDestroy {
   estudiantesForm: FormGroup;
   estudianteToEdit:any;
-  
+  subscriptions:Subscription;
   constructor(private fb:FormBuilder, private estudiantesService: EstudiantesService, private router:Router) { }
 
   ngOnInit(): void {
+    this.subscriptions=new Subscription();
     this.estudiantesForm=this.fb.group({
       nombreEstudiante:['', Validators.required],
       curso: ['', Validators.required],
       nota:['', Validators.required]
     })
-    this.estudiantesService.getEstudiantesToEdit().subscribe(
-      val=>this.estudianteToEdit=val
-    )
+    this.subscriptions.add(this.estudiantesService.getEstudiantesToEdit().subscribe(
+      (val)=>this.estudianteToEdit=val
+    ))
+  
+    // this.estudiantesService.getEstudiantesToEdit().subscribe(
+    //   val=>this.estudianteToEdit=val
+    // )
     if(this.estudianteToEdit){
       this.estudiantesForm.get('nombreEstudiante')?.patchValue(this.estudianteToEdit.nombreEstudiante);
       this.estudiantesForm.get('curso')?.patchValue(this.estudianteToEdit.curso);
@@ -53,6 +59,12 @@ export class EstudiantesFormComponent implements OnInit {
   }
   volver(){
     this.router.navigate(['/estudiantes/list']);
+  }
+
+  ngOnDestroy(): void {
+    if(this.subscriptions){
+      this.subscriptions.unsubscribe();
+    }
   }
 
 }
