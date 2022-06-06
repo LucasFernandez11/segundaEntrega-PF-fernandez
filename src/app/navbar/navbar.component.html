@@ -3,12 +3,17 @@
       <span appFuentes class="boton">List-App</span>
       <span class="example-spacer"></span> <!--separador universal-->
       <!-- se inyecta menu dinamicamente por archivo json -->
-      <button appFuentes class="boton" mat-button  > </button>  
-      
-      <span class="example-spacer"></span><!--separador universal-->
+      <div *ngIf="menu">
+        <button  appFuentes class="boton" mat-button *ngFor="let item of menu" [routerLink]="item.redirect">{{item.nombre}} </button> 
+
+      </div>
+
+      <span class="example-spacer"></span>
+    
+<!--       
       <button mat-icon-button routerLink="/login">
-        <mat-icon appFuentes class="boton">logout</mat-icon> <!--boton de escape para el login-- proximamente sera de deslogueo, actualmente no desloguea al usuario, solo rutea a la vista de login-->
-      </button>
+        <mat-icon appFuentes class="boton">logout</mat-icon>  
+      </button> -->
     </mat-toolbar>
   </div>
   

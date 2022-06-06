@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -10,7 +11,8 @@ import { EstudiantesComponent } from './estudiantes.component';
 
 @NgModule({
   declarations: [
-    EstudiantesComponent
+    EstudiantesComponent,
+   
   ],
   imports: [
     BrowserModule,

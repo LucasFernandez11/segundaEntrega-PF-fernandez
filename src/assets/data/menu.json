@@ -1,0 +1,11 @@
+[
+   
+    {
+        "nombre":"Lista",
+        "redirect":"/estudiantes/list"
+    },
+    {
+        "nombre":"Editar",
+        "redirect":"/add-edit-estudiantes"
+    }
+]

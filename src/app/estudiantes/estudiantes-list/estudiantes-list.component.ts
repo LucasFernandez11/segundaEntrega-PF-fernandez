@@ -16,7 +16,7 @@ export class EstudiantesListComponent implements OnInit, OnDestroy {
 
   estudiantes:any=[];
   subscriptions:Subscription;
-  admin: boolean = false;
+  admin: boolean = true;
   @ViewChild('table') table: MatTable<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
