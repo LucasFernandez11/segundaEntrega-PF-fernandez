@@ -1,2 +1,26 @@
+<div class="contenedor">
+    <app-navbar></app-navbar>   
+   
+    <mat-sidenav-container class="contenedor" >
+        <mat-sidenav class="bg-barra" mode="side" [(opened)]="opened">
+          
+          <button class="my-3 mx-2 boton" mat-raised-button color="primary">Lista de Estudiantes</button>
+          <br>
+          <button class="my-3 mx-2 boton"mat-raised-button color="primary">Lista de Profesores</button>
+          <br>
+          <button class="my-3 mx-2 boton"mat-raised-button color="primary">Lista de Cursos</button>
+          <br>
+          <button class="my-3 mx-2 boton"mat-raised-button color="primary">Mejores Promedios</button>
+          
+        </mat-sidenav>
+        <!-- contenedor de todas las vistas -->
+        <mat-sidenav-content>
+          <button  mat-mini-fab class="boton"  (click)="opened=!opened"><mat-icon>more_vert</mat-icon></button>
+          
+          <!-- directiva de ruteo para las demas vistas -->
+          <router-outlet></router-outlet>
+          
+        </mat-sidenav-content>
+      </mat-sidenav-container>
 
-<router-outlet></router-outlet>
+</div>    

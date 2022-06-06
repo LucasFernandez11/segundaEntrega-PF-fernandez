@@ -4,19 +4,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { RouterModule } from '@angular/router';
-import { ProductsRoutingModule } from './products-routing.module';
-import { ProductsComponent } from './products.component';
+import { EstudiantesRoutingModule } from './estudiantes-routing.module';
+import { EstudiantesComponent } from './estudiantes.component';
 
 
 @NgModule({
   declarations: [
-      ProductsComponent
+    EstudiantesComponent
   ],
   imports: [
     BrowserModule,
     RouterModule,
-    ProductsRoutingModule
+    EstudiantesRoutingModule
   ],
   providers: []
 })
-export class ProductsModule { }
+export class EstudiantesModule { }

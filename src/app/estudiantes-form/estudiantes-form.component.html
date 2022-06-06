@@ -1,0 +1,39 @@
+<div class="container">
+  <mat-card class="mt-4">
+    <form [formGroup]="estudiantesForm" (ngSubmit)="onSubmit()">
+      <mat-grid-list cols="4" rowHeight="70px">
+
+        <mat-grid-tile  [colspan]="1" [rowspan]="1">
+          <mat-form-field class="ancho" appearance="fill">
+            <mat-label>Estudiante</mat-label>
+            <input formControlName="nombreEstudiante" matInput>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="5">
+          <img width="250" height="250" src="../../assets/img/programmer.png" alt="logo de usuario">
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="ancho" appearance="fill">
+            <mat-label>Curso</mat-label>
+            <input formControlName="curso" matInput>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="ancho" appearance="fill">
+            <mat-label>Nota</mat-label>
+            <input formControlName="nota" matInput>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <button class=" mx-4" mat-raised-button color="warn" (click)="volver()" >Volver</button>
+          <button class="mx-4" color="primary" mat-raised-button [disabled]="estudiantesForm.invalid" type="submit">Submit</button>
+        </mat-grid-tile>
+
+      </mat-grid-list>
+    </form>
+  </mat-card>
+</div>

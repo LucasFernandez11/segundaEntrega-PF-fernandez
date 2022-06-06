@@ -1,0 +1,77 @@
+<div class="container bg-div">
+  <mat-toolbar class="toolbar-container">
+    <p appFuentes class="text-white">Estudiantes</p>
+    <div class="example-spacer"></div>
+    <span class="example-spacer"></span>
+
+    <button class="my-2 mx-3 boton" mat-raised-button (click)="ingresarAdmin()">Admin</button>
+
+
+    <span class="example-spacer"></span>
+
+    <button class="my-2 mx-3 boton" mat-raised-button (click)="ingresarUsuario()">Usuario</button>
+
+
+    <span class="example-spacer"></span>
+
+    <button *ngIf="admin" mat-raised-button color="primary" (click)="onAddElement()">+ Añadir Nuevo Estudiante</button>
+
+  </mat-toolbar>
+
+  <div *ngIf="estudiantes.length > 0" class="mt-5 ">
+    <mat-form-field appearance="fill" class="barra-filtrar fs-6 text-white">
+      <mat-label class="text-white">Buscar</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="" #input autocomplete="off">
+    </mat-form-field>
+
+
+    <div class="mat-elevation-z8 mt-4 ">
+
+
+      <table *ngIf="estudiantes" #table mat-table [dataSource]="estudiantes">
+        <!-- class="mat-elevation-z8" -->
+        <ng-container matColumnDef="nombreEstudiante">
+          <th mat-header-cell *matHeaderCellDef> Estudiante </th>
+          <td mat-cell *matCellDef="let element" (click)="onClickRow(element)">
+            {{element.nombreEstudiante}}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="curso">
+          <th mat-header-cell *matHeaderCellDef>
+            Curso </th>
+          <td mat-cell *matCellDef="let element" (click)="onClickRow(element)">
+            {{element.curso}}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nota">
+          <th mat-header-cell *matHeaderCellDef> Nota </th>
+          <td mat-cell *matCellDef="let element" (click)="onClickRow(element)"> {{element.nota}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div (click)="borrarEstudiante(element)">
+              <span class="material-icons">
+                delete
+              </span>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <!-- paginador de angular material- configurado manualmente para el manejo de la lista -->
+      <mat-paginator class="bg-tabla text-white fs-5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+      aria-label="Select page of periodic elements"> 
+      </mat-paginator>
+    </div>
+  </div>
+  <div *ngIf="estudiantes.length == 0">
+    <h2 class="text-white">No existen registros para mostrar</h2>
+  </div>
+</div>
