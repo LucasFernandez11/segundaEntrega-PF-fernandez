@@ -15,6 +15,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FuentesDirective } from './directivas/fuentes.directive';
 
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+
+
 
 const appRoutes=[
   {path:'add-edit-estudiantes', component:EstudiantesFormComponent},
@@ -31,7 +39,9 @@ const appRoutes=[
     EstudiantesDetailsComponent,
     PageNotFoundComponent,
     NavbarComponent,
-    FuentesDirective
+    FuentesDirective,
+
+  
   ],
   imports: [
     BrowserModule,
@@ -40,7 +50,13 @@ const appRoutes=[
     BrowserAnimationsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
-    EstudiantesRoutingModule
+    EstudiantesRoutingModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

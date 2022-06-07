@@ -1,6 +1,6 @@
-import { map, Observable, Subscription } from 'rxjs';
-import { MenuService } from './../shared/menu.service';
-import { Menu } from './../interfaces/menu';
+import { delay, Observable, Subscription, of } from 'rxjs';
+
+
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
@@ -9,27 +9,25 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit, OnDestroy {
-  menu:Menu[]=[];
-  menu$: Subscription;
-  constructor(private menuService: MenuService ) {
-    // this.menu$ = this.menuService.getMenu()
-    // .pipe(
-    //   map( (x:any)=>{
-    //     return {name: x.nombre, redirect: x.redirect};
-    //   })
-    // )
+ subscriptions: Subscription;
+  //promesa
+ asyncEditButton:Promise<string>;
+ //observable
+ asyncListButton:Observable<any>;
+
+ listButton:any;
+
+  constructor(  ) {
+    
    }
 
   ngOnInit(): void {
-    this.cargarMenu();
+    this.subscriptions=new Subscription();
+  
   }
-  cargarMenu(): void {
-    this.menuService.getMenu().subscribe(data => {
-      // console.log(data) ;
-      this.menu = data;
-    });
-  }
+ 
+  
   ngOnDestroy(): void {
-    this.menu$.unsubscribe();
+   
   }
 }

@@ -71,7 +71,10 @@
       </mat-paginator>
     </div>
   </div>
-  <div *ngIf="estudiantes.length == 0">
-    <h2 class="text-white">No existen registros para mostrar</h2>
+  <div *ngIf="estudiantes.length == 0 && character" >
+    <!-- <h2 class="text-white">No existen registros para mostrar</h2> -->
+    <h2> {{character.name}} </h2>
+    <img [src]="character.image" >
+    
   </div>
 </div>

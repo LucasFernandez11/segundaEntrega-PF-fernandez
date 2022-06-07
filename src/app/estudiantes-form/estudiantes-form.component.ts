@@ -60,7 +60,19 @@ export class EstudiantesFormComponent implements OnInit, OnDestroy {
   volver(){
     this.router.navigate(['/estudiantes/list']);
   }
-
+  promise = new Promise((resolve, reject) => {
+    const number = Math.floor(Math.random() * 10);
+  
+    setTimeout(
+      () => number > 5
+        ? resolve(number)
+        : reject(new Error('Menor a 5')),
+      1000
+    );
+  });
+  
+  
+ 
   ngOnDestroy(): void {
     if(this.subscriptions){
       this.subscriptions.unsubscribe();

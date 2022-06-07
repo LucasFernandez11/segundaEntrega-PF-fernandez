@@ -1,11 +1,15 @@
+import { Usuario } from './../../usuario';
+import { RickAndMortyService } from './../../shared/rickandMorty.service';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { map, Subscription } from 'rxjs';
+import { map, Subscription, Observable, subscribeOn } from 'rxjs';
 import { EstudiantesService } from 'src/app/shared/estudiantes.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+
+
 
 @Component({
   selector: 'app-product-list',
@@ -13,7 +17,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./estudiantes-list.component.scss']
 })
 export class EstudiantesListComponent implements OnInit, OnDestroy {
-
+  
   estudiantes:any=[];
   subscriptions:Subscription;
   admin: boolean = true;
@@ -22,7 +26,22 @@ export class EstudiantesListComponent implements OnInit, OnDestroy {
   @ViewChild(MatSort) sort!: MatSort;
   dataSource = new MatTableDataSource<any>();
   displayedColumns=['nombreEstudiante', 'curso', 'nota', 'delete'];
-  constructor(private router:Router, private estudiantesService:EstudiantesService) { }
+
+  character$: Subscription;
+  character:any;
+  user = new Usuario('username1');
+
+
+  constructor(private router:Router, 
+              private estudiantesService:EstudiantesService,
+              private rickAndMortyService: RickAndMortyService
+              ){
+                this.character$ = this.rickAndMortyService.getCharacters$(5).subscribe(
+                  (character)=>this.character=character
+                ); 
+               
+              }
+    
 
   ngOnInit(): void {
     this.subscriptions=new Subscription();
@@ -30,6 +49,11 @@ export class EstudiantesListComponent implements OnInit, OnDestroy {
       (val)=>this.estudiantes=val
     )
     )
+    this.user.obtenerUsuario()
+    .then((usuario)=>{
+      console.log(usuario)
+    })
+    .catch((error)=>console.log(error));  
   }
 
   onClickRow(el:any){
@@ -64,10 +88,11 @@ ingresarUsuario(){
   this.admin = false;
 }
 
+
+
   ngOnDestroy(): void {
-    if(this.subscriptions){
-      this.subscriptions.unsubscribe();
-    }
+    this.character$.unsubscribe();
   }
+
 
 }
