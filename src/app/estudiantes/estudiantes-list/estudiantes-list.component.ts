@@ -1,10 +1,12 @@
+import { EstudiantesService } from './../../services/estudiantes.service';
+import { RickAndMortyService } from './../../services/rickandMorty.service';
 import { Usuario } from './../../usuario';
-import { RickAndMortyService } from './../../shared/rickandMorty.service';
+
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { map, Subscription, Observable, subscribeOn } from 'rxjs';
-import { EstudiantesService } from 'src/app/shared/estudiantes.service';
+
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -49,11 +51,7 @@ export class EstudiantesListComponent implements OnInit, OnDestroy {
       (val)=>this.estudiantes=val
     )
     )
-    this.user.obtenerUsuario()
-    .then((usuario)=>{
-      console.log(usuario)
-    })
-    .catch((error)=>console.log(error));  
+    
   }
 
   onClickRow(el:any){

@@ -1,4 +1,6 @@
-import { RickAndMortyService } from './../shared/rickandMorty.service';
+import { CursosService } from './../services/cursos.service';
+import { RickAndMortyService } from './../services/rickandMorty.service';
+
 import { map, Subscription, Observable, subscribeOn } from 'rxjs';
 import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -6,7 +8,7 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { CursosService } from '../shared/cursos.service';
+
 
 @Component({
   selector: 'app-cursos',

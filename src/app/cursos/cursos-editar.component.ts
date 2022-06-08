@@ -1,4 +1,5 @@
-import { CursosService } from './../shared/cursos.service';
+import { CursosService } from './../services/cursos.service';
+
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map, Subscription } from 'rxjs';

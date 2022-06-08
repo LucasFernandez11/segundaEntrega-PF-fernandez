@@ -1,7 +1,10 @@
-import { HomeComponent } from './estudiantes/home/home.component';
+import { CursosEditarComponent } from './cursos/cursos-editar.component';
+
+
+import { CursosRoutingModule } from './cursos/cursos-routing.module';
+import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,10 +19,9 @@ import { MaterialModule } from './shared/materials.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FuentesDirective } from './directivas/fuentes.directive';
-
 import { LayoutModule } from '@angular/cdk/layout';
 import { CursosListComponent } from './cursos/cursosList.component';
-import { CursosEditarComponent } from './cursos/cursos-editar.component';
+
 
 
 
@@ -27,7 +29,7 @@ import { CursosEditarComponent } from './cursos/cursos-editar.component';
 
 const appRoutes=[
   {path:'add-edit-estudiantes', component:EstudiantesFormComponent},
-  {path:'cursos-edit', component:CursosEditarComponent},
+  
   {path:'estudiantes', loadChildren: ()=>import('./estudiantes/estudiantes.module').then(m=>m.EstudiantesModule)},
   {path:'', redirectTo:'/home', pathMatch:'full'},
   {path:'**', component:PageNotFoundComponent }
@@ -43,11 +45,10 @@ const appRoutes=[
     NavbarComponent,
     FuentesDirective,
     HomeComponent,
-    CursosListComponent,
     CursosEditarComponent,
-  
-
-  
+    CursosListComponent
+    
+    
   ],
   imports: [
     BrowserModule,
@@ -58,6 +59,8 @@ const appRoutes=[
     RouterModule.forRoot(appRoutes),
     EstudiantesRoutingModule,
     LayoutModule,
+    CursosRoutingModule,
+   
    
   ],
   providers: [],
