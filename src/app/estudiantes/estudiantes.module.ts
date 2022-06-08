@@ -9,9 +9,11 @@ import { EstudiantesRoutingModule } from './estudiantes-routing.module';
 import { EstudiantesComponent } from './estudiantes.component';
 
 
+
 @NgModule({
   declarations: [
     EstudiantesComponent,
+  
    
   ],
   imports: [

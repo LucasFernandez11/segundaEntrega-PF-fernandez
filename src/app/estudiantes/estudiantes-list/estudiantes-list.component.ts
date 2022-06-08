@@ -25,7 +25,7 @@ export class EstudiantesListComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   dataSource = new MatTableDataSource<any>();
-  displayedColumns=['nombreEstudiante', 'curso', 'nota', 'delete'];
+  displayedColumns=['nombreEstudiante', 'curso', 'nota', 'acciones'];
 
   character$: Subscription;
   character:any;
@@ -57,12 +57,13 @@ export class EstudiantesListComponent implements OnInit, OnDestroy {
   }
 
   onClickRow(el:any){
+   
     this.estudiantesService.estudianteToEdit=el;
     this.router.navigate(['/add-edit-estudiantes']);
+    
   }
 
   borrarEstudiante(el:any){
-
     //Eliminación de estudiante
     let index = this.estudiantes.findIndex((student: { id: any; })=> student.id===el.id);
     this.estudiantes.splice(index,1);

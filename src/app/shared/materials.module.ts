@@ -10,7 +10,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatPaginatorModule} from '@angular/material/paginator';
-
+import { MatListModule } from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -29,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatGridListModule,
     MatSidenavModule,
     MatPaginatorModule,
-    HttpClientModule
+    HttpClientModule,
+    MatListModule
   ]
 })
 export class MaterialModule { }

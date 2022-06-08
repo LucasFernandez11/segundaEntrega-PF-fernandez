@@ -26,9 +26,9 @@ export class EstudiantesFormComponent implements OnInit, OnDestroy {
       (val)=>this.estudianteToEdit=val
     ))
   
-    // this.estudiantesService.getEstudiantesToEdit().subscribe(
-    //   val=>this.estudianteToEdit=val
-    // )
+    this.estudiantesService.getEstudiantesToEdit().subscribe(
+      val=>this.estudianteToEdit=val
+    )
     if(this.estudianteToEdit){
       this.estudiantesForm.get('nombreEstudiante')?.patchValue(this.estudianteToEdit.nombreEstudiante);
       this.estudiantesForm.get('curso')?.patchValue(this.estudianteToEdit.curso);
@@ -37,24 +37,24 @@ export class EstudiantesFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(){
-    let productos=[];
+    let estudiatesArray=[];
     this.estudiantesService.getEstudiantesList().subscribe(
-      val=>productos=val
+      val=>estudiatesArray=val
     )
     let index=1;
-    if(productos.length>0 && !this.estudianteToEdit){
-      index=productos.length+1;
+    if(estudiatesArray.length>0 && !this.estudianteToEdit){
+      index=estudiatesArray.length+1;
       this.estudiantesForm.value['id']=index;
-      productos.push(this.estudiantesForm.value);
-    }else if(productos.length===0 && !this.estudianteToEdit){
+      estudiatesArray.push(this.estudiantesForm.value);
+    }else if(estudiatesArray.length===0 && !this.estudianteToEdit){
       this.estudiantesForm.value['id']=index;
-      productos.push(this.estudiantesForm.value);
+      estudiatesArray.push(this.estudiantesForm.value);
     }
     if(this.estudianteToEdit){
-      let indexOfProduct=productos.findIndex((product)=>product.id===this.estudianteToEdit.id);
-      productos[indexOfProduct]=this.estudiantesForm.value;
+      let indexOfProduct=estudiatesArray.findIndex((product)=>product.id===this.estudianteToEdit.id);
+      estudiatesArray[indexOfProduct]=this.estudiantesForm.value;
     }
-    this.estudiantesService.estudianteList=productos!
+    this.estudiantesService.estudianteList=estudiatesArray!
     this.router.navigate(['/estudiantes/list']);
   }
   volver(){

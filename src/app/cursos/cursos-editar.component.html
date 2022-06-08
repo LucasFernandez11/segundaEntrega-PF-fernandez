@@ -1,0 +1,39 @@
+<div class="container">
+    <mat-card class="mt-4">
+      <form [formGroup]="cursosForm" (ngSubmit)="onSubmit()">
+        <mat-grid-list cols="4" rowHeight="70px">
+  
+          <mat-grid-tile  [colspan]="1" [rowspan]="1">
+            <mat-form-field class="ancho" appearance="fill">
+              <mat-label>Curso</mat-label>
+              <input formControlName="nombreCurso" matInput>
+            </mat-form-field>
+          </mat-grid-tile>
+  
+          <mat-grid-tile [colspan]="3" [rowspan]="5">
+            <img width="300" height="250" src="https://user-images.githubusercontent.com/48678280/88862734-4903af80-d201-11ea-968b-9c939d88a37c.gif" alt="logo de usuario">
+          </mat-grid-tile>
+  
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field class="ancho" appearance="fill">
+              <mat-label>Duracion</mat-label>
+              <input formControlName="duracion" matInput>
+            </mat-form-field>
+          </mat-grid-tile>
+  
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field class="ancho" appearance="fill">
+              <mat-label>Profesor</mat-label>
+              <input formControlName="profesor" matInput>
+            </mat-form-field>
+          </mat-grid-tile>
+  
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <button class=" mx-4" mat-raised-button color="warn" (click)="volver()" >Volver</button>
+            <button class="mx-4" color="primary" mat-raised-button [disabled]="cursosForm.invalid" type="submit">Aceptar</button>
+          </mat-grid-tile>
+  
+        </mat-grid-list>
+      </form>
+    </mat-card>
+  </div>

@@ -1,26 +1,40 @@
 <div class="contenedor">
-    <app-navbar></app-navbar>   
-   
-    <mat-sidenav-container class="contenedor" >
-        <mat-sidenav class="bg-barra" mode="side" [(opened)]="opened">
-          
-          <button class="my-3 mx-2 boton" mat-raised-button color="primary">Lista de Estudiantes</button>
-          <br>
-          <button class="my-3 mx-2 boton"mat-raised-button color="primary">Lista de Profesores</button>
-          <br>
-          <button class="my-3 mx-2 boton"mat-raised-button color="primary">Lista de Cursos</button>
-          <br>
-          <button class="my-3 mx-2 boton"mat-raised-button color="primary">Mejores Promedios</button>
+      
+  <app-navbar></app-navbar> 
+  <mat-sidenav-container class="contenedor" >
+        <mat-sidenav class="bg-barra sidenav" mode="side" opened fixedInViewport="true"fixedTopGap="64">
+          <mat-nav-list class="nav-list">
+            <a mat-list-item routerLink="/estudiantes/home">
+                <i class="material-icons">
+                    home
+                </i>
+                Inicio
+            </a>
+            <a mat-list-item  routerLink="/estudiantes/list">
+                <i class="material-icons">
+                    groups 
+                </i>
+                Lista de Estudiantes
+            </a>
+            <a mat-list-item  routerLink="/cursos-list">
+                <i class="material-icons">
+                    groups 
+                </i>
+                Lista de Cursos
+            </a>
+            
+        </mat-nav-list>        
           
         </mat-sidenav>
-        <!-- contenedor de todas las vistas -->
+      
         <mat-sidenav-content>
-          <button  mat-mini-fab class="boton"  (click)="opened=!opened"><mat-icon>more_vert</mat-icon></button>
+          <!-- <button  mat-mini-fab class="boton"  (click)="opened=!opened"><mat-icon>more_vert</mat-icon></button> -->
           
-          <!-- directiva de ruteo para las demas vistas -->
+        
           <router-outlet></router-outlet>
           
         </mat-sidenav-content>
       </mat-sidenav-container>
 
 </div>    
+

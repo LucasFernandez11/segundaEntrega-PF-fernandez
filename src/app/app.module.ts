@@ -1,3 +1,4 @@
+import { HomeComponent } from './estudiantes/home/home.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -7,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EstudiantesFormComponent } from './estudiantes-form/estudiantes-form.component';
 import {EstudiantesListComponent } from './estudiantes/estudiantes-list/estudiantes-list.component';
 import { EstudiantesDetailsComponent } from './estudiantes/estudiantes-details/estudiantes-details.component';
+
 import { RouterModule } from '@angular/router';
 import { EstudiantesRoutingModule } from './estudiantes/estudiantes-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -16,18 +18,18 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FuentesDirective } from './directivas/fuentes.directive';
 
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
+import { CursosListComponent } from './cursos/cursosList.component';
+import { CursosEditarComponent } from './cursos/cursos-editar.component';
+
+
 
 
 
 const appRoutes=[
   {path:'add-edit-estudiantes', component:EstudiantesFormComponent},
+  {path:'cursos-edit', component:CursosEditarComponent},
   {path:'estudiantes', loadChildren: ()=>import('./estudiantes/estudiantes.module').then(m=>m.EstudiantesModule)},
-  {path:'', redirectTo:'/estudiantes', pathMatch:'full'},
+  {path:'', redirectTo:'/home', pathMatch:'full'},
   {path:'**', component:PageNotFoundComponent }
 ]
 
@@ -40,6 +42,10 @@ const appRoutes=[
     PageNotFoundComponent,
     NavbarComponent,
     FuentesDirective,
+    HomeComponent,
+    CursosListComponent,
+    CursosEditarComponent,
+  
 
   
   ],
@@ -52,11 +58,7 @@ const appRoutes=[
     RouterModule.forRoot(appRoutes),
     EstudiantesRoutingModule,
     LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule
+   
   ],
   providers: [],
   bootstrap: [AppComponent]
