@@ -5,6 +5,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { CursosEditarComponent } from './cursos-editar.component';
+
+
 const routesCursos: Routes = [
   {path:'cursos', component:CursosComponent, children:[
       {path:'list', component: CursosListComponent},

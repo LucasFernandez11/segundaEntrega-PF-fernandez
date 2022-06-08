@@ -1,6 +1,5 @@
 import { CursosEditarComponent } from './cursos/cursos-editar.component';
-
-
+import { CursosListComponent } from './cursos/cursosList.component';
 import { CursosRoutingModule } from './cursos/cursos-routing.module';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
@@ -20,12 +19,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FuentesDirective } from './directivas/fuentes.directive';
 import { LayoutModule } from '@angular/cdk/layout';
-import { CursosListComponent } from './cursos/cursosList.component';
-
-
-
-
-
 
 const appRoutes=[
   {path:'add-edit-estudiantes', component:EstudiantesFormComponent},

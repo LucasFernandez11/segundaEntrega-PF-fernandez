@@ -1,4 +1,4 @@
-import { EstudiantesService } from './../../services/estudiantes.service';
+import { EstudiantesService } from '../service/estudiantes.service';
 import { RickAndMortyService } from './../../services/rickandMorty.service';
 import { Usuario } from './../../usuario';
 

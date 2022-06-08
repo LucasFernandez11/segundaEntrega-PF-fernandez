@@ -1,4 +1,4 @@
-import { EstudiantesService } from './../services/estudiantes.service';
+import { EstudiantesService } from '../estudiantes/service/estudiantes.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map, Subscription } from 'rxjs';

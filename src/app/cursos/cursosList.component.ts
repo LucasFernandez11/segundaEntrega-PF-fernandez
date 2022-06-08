@@ -1,4 +1,4 @@
-import { CursosService } from './../services/cursos.service';
+import { CursosService } from './service/cursos.service';
 import { RickAndMortyService } from './../services/rickandMorty.service';
 
 import { map, Subscription, Observable, subscribeOn } from 'rxjs';
