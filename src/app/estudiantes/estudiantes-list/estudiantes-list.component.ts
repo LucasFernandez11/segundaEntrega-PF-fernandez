@@ -1,6 +1,6 @@
 import { EstudiantesService } from '../service/estudiantes.service';
 import { RickAndMortyService } from './../../services/rickandMorty.service';
-import { Usuario } from './../../usuario';
+
 
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
@@ -19,7 +19,8 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./estudiantes-list.component.scss']
 })
 export class EstudiantesListComponent implements OnInit, OnDestroy {
-  
+  descripcion:boolean = false;
+
   estudiantes:any=[];
   subscriptions:Subscription;
   admin: boolean = true;
@@ -31,7 +32,7 @@ export class EstudiantesListComponent implements OnInit, OnDestroy {
 
   character$: Subscription;
   character:any;
-  user = new Usuario('username1');
+  
 
 
   constructor(private router:Router, 
@@ -86,6 +87,7 @@ export class EstudiantesListComponent implements OnInit, OnDestroy {
 ingresarUsuario(){
   this.admin = false;
 }
+
 
 
 

@@ -21,7 +21,8 @@ export class EstudiantesFormComponent implements OnInit, OnDestroy {
     this.estudiantesForm=this.fb.group({
       nombreEstudiante:['', Validators.required],
       curso: ['', Validators.required],
-      nota:['', Validators.required]
+      nota:['', Validators.required],
+     
     })
     this.subscriptions.add(this.estudiantesService.getEstudiantesToEdit().subscribe(
       (val)=>this.estudianteToEdit=val
@@ -34,6 +35,7 @@ export class EstudiantesFormComponent implements OnInit, OnDestroy {
       this.estudiantesForm.get('nombreEstudiante')?.patchValue(this.estudianteToEdit.nombreEstudiante);
       this.estudiantesForm.get('curso')?.patchValue(this.estudianteToEdit.curso);
       this.estudiantesForm.get('nota')?.patchValue(this.estudianteToEdit.nota);
+      
     }
   }
 
@@ -43,34 +45,19 @@ export class EstudiantesFormComponent implements OnInit, OnDestroy {
       val=>estudiatesArray=val
     )
     let index=1;
-    if(estudiatesArray.length>0 && !this.estudianteToEdit){
+    if(estudiatesArray.length >=0 && !this.estudianteToEdit){
       index=estudiatesArray.length+1;
-      this.estudiantesForm.value['id']=index;
+      this.estudiantesForm.value['id'] = index;
       estudiatesArray.push(this.estudiantesForm.value);
-    }else if(estudiatesArray.length===0 && !this.estudianteToEdit){
-      this.estudiantesForm.value['id']=index;
-      estudiatesArray.push(this.estudiantesForm.value);
-    }
-    if(this.estudianteToEdit){
-      let indexOfProduct=estudiatesArray.findIndex((product)=>product.id===this.estudianteToEdit.id);
-      estudiatesArray[indexOfProduct]=this.estudiantesForm.value;
-    }
+    }   
     this.estudiantesService.estudianteList=estudiatesArray!
     this.router.navigate(['/estudiantes/list']);
   }
+
   volver(){
     this.router.navigate(['/estudiantes/list']);
-  }
-  promise = new Promise((resolve, reject) => {
-    const number = Math.floor(Math.random() * 10);
-  
-    setTimeout(
-      () => number > 5
-        ? resolve(number)
-        : reject(new Error('Menor a 5')),
-      1000
-    );
-  });
+  }  
+ 
   
   
  

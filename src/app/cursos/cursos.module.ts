@@ -11,10 +11,10 @@ import { CursosComponent } from './cursos.component';
 
 @NgModule({
   declarations: [
-    
-    
-  
-    CursosComponent
+    CursosEditarComponent,
+    CursosListComponent,
+    CursosComponent,
+    RouterModule
   ],
   imports: [
     BrowserModule,
@@ -22,7 +22,10 @@ import { CursosComponent } from './cursos.component';
     CursosRoutingModule,
    
   ], exports: [
-   
+    CursosEditarComponent,
+    CursosListComponent,
+    CursosComponent,
+    RouterModule
   ]
 })
 export class CursosModule { }

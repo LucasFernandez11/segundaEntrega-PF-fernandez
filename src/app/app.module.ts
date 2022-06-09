@@ -39,9 +39,7 @@ const appRoutes=[
     FuentesDirective,
     HomeComponent,
     CursosEditarComponent,
-    CursosListComponent
-    
-    
+    CursosListComponent  
   ],
   imports: [
     BrowserModule,
